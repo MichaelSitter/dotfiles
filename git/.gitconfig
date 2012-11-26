@@ -1,0 +1,35 @@
+[core]
+	autocrlf = true
+	excludesfiles = ~/.gitignore_global
+[user]
+	email = michaels@iqmetrix.com
+	name = "Mike S"
+[alias]
+	st = status -s
+	b = branch
+	ci = commit
+	co = checkout
+	df = diff
+	dft = difftool
+	mgt = mergetool
+	lg = log -p
+	lol = log --graph --decorate --oneline
+	lola = log --graph --decorate --oneline --all
+[diff]
+	tool = kdiff3
+	guitool = kdiff3
+[push]
+	default = tracking
+[branch]
+	autosetuprebase = remote
+[merge]
+	tool = kdiff3
+[mergetool.kdiff3]
+	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+[difftool.kdiff3]
+	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+	cmd = \"C:/Program Files (x86)/KDiff3/kdiff3.exe\" \"$LOCAL\" \"$REMOTE\"
+[color]
+	diff = auto
+	branch = auto
+	status = auto
