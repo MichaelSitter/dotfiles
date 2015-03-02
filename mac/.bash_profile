@@ -60,8 +60,13 @@ alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\
 #   -------------------------------
 #   VCS
 #   -------------------------------
+# Homebrew
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
+fi
+# MacPorts
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
 fi
 
 
