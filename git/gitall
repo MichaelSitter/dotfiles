@@ -1,0 +1,31 @@
+#!/bin/sh
+
+DEFAULT_BRANCH=master
+BRANCH=${2-$DEFAULT_BRANCH};
+DIRS=`find * -maxdepth 1 -type d -name '.git' | sed s/\\\\/.git//g`;
+
+if [ $# -eq 0 ]; then
+    echo "Usage:";
+    echo "\t$0 status";
+    echo "\t$0 pull [<branch_name>]";
+    exit 1;
+fi
+
+for i in $DIRS; do
+    cd $i;
+    echo "$i: ";
+    case $1 in
+        pull)
+            git checkout master;
+            git checkout $BRANCH;
+            git stash -a;
+            git pull;
+            git stash pop;
+            ;;
+        status)
+            git status -sb;
+            ;;
+    esac
+    echo "----------------"
+    cd ..;
+done
