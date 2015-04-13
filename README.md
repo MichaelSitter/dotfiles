@@ -1,2 +1,3 @@
 dotfiles
 ========
+Profiles & shell scripts

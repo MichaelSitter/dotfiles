@@ -1,0 +1,12 @@
+#!/bin/bash
+BRANCH=$1
+
+if [[ -z "$BRANCH" ]]; then
+        echo "BRANCH is empty - required arg"
+        exit 2
+fi
+
+git checkout master
+git pull
+git checkout $BRANCH
+git merge master

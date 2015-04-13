@@ -2,8 +2,8 @@
 	autocrlf = true
 	excludesfiles = ~/.gitignore_global
 [user]
-	email = michaels@iqmetrix.com
-	name = "Mike S"
+	email = sitter.michael@gmail.com
+	name = "Michael Sitter"
 [alias]
 	st = status -s
 	b = branch
@@ -25,10 +25,9 @@
 [merge]
 	tool = kdiff3
 [mergetool.kdiff3]
-	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
+	# TODO 
 [difftool.kdiff3]
-	path = C:/Program Files (x86)/KDiff3/kdiff3.exe
-	cmd = \"C:/Program Files (x86)/KDiff3/kdiff3.exe\" \"$LOCAL\" \"$REMOTE\"
+	# TODO
 [color]
 	diff = auto
 	branch = auto

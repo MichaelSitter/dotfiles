@@ -5,27 +5,27 @@ BRANCH=${2-$DEFAULT_BRANCH};
 DIRS=`find * -maxdepth 1 -type d -name '.git' | sed s/\\\\/.git//g`;
 
 if [ $# -eq 0 ]; then
-    echo "Usage:";
-    echo "\t$0 status";
-    echo "\t$0 pull [<branch_name>]";
-    exit 1;
+	echo "Usage:";
+	echo "\t$0 status";
+	echo "\t$0 pull [<branch_name>]";
+	exit 1;
 fi
 
 for i in $DIRS; do
-    cd $i;
-    echo "$i: ";
-    case $1 in
-        pull)
-            git checkout master;
-            git checkout $BRANCH;
-            git stash -a;
-            git pull;
-            git stash pop;
-            ;;
-        status)
-            git status -sb;
-            ;;
-    esac
-    echo "----------------"
-    cd ..;
+	cd $i;
+	echo "$i: ";
+	case $1 in
+		status)
+			git fetch --all;
+			git status -sb;
+			;;
+		pull)
+			git add -A;
+			git stash save "auto stash for pull";
+			git checkout master;
+			git pull;
+			;;
+	esac
+	echo "----------------"
+	cd ..;
 done
