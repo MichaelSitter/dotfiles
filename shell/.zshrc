@@ -1,10 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-######
-# Paths
-######
-
 # Directories to be prepended to $PATH
 declare -a dirs_to_prepend
 dirs_to_prepend=(
@@ -42,30 +38,20 @@ export PATH
 
 source $ZSH/oh-my-zsh.sh
 
-# oh-my-zsh settings
-# Uncomment the following line to enable command auto-correction.
+###########################
+# oh-my-zsh settings - https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
+###########################
+. ~/z/z.sh
 ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# Themeing
 ZSH_THEME="jonathan"
 
 #  https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins
 plugins=(git node npm brew golang yarn)
 
-#######
-# Utils
-# TODO: migrate to external scripts
-#######
-whoisusing () {
-  lsof -n -i4TCP:$1 | grep LISTEN
-}
-
-######
-# Installation & Setup
-######
+###########################
+# User configuration
+###########################
 
 export GOPATH="$HOME/gocode"
 export RBENV_ROOT=/usr/local/var/rbenv
