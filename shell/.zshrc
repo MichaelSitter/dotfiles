@@ -71,10 +71,6 @@ export GOPATH="$HOME/gocode"
 export RBENV_ROOT=/usr/local/var/rbenv
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
 # npm tab completion
 . <(npm completion)
 
