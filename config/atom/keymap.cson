@@ -1,0 +1,5 @@
+'atom-text-editor':
+  'alt-cmd-right': 'window:focus-pane-on-right'
+  'alt-cmd-left': 'window:focus-pane-on-left'
+  'alt-cmd-up': 'window:focus-pane-above'
+  'alt-cmd-down': 'window:focus-pane-below'
