@@ -70,6 +70,11 @@ eval "$(rbenv init -)"
 # jenv - https://github.com/gcuisinier/jenv
 eval "$(jenv init -)"
 
+# Keybindings
+bindkey -e
+bindkey '[C' forward-word
+bindkey '[D' backward-word
+
 source $ZSH/oh-my-zsh.sh
 
 # Source local extra (private) settings specific to machine if it exists
