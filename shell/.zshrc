@@ -75,6 +75,10 @@ bindkey -e
 bindkey '[C' forward-word
 bindkey '[D' backward-word
 
+# Aliases
+alias git-master='git add -A && git stash && git co master && git pull'
+alias git-latest='git add -A && git stash && git pull && git stash pop'
+
 source $ZSH/oh-my-zsh.sh
 
 # Source local extra (private) settings specific to machine if it exists
