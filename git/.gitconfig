@@ -1,5 +1,4 @@
 [core]
-	autocrlf = true
 	excludesfiles = ~/.gitignore_global
 [user]
 	email = sitter.michael@gmail.com
