@@ -47,7 +47,16 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_THEME="jonathan"
 
 #  https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins
-plugins=(git node npm brew golang yarn)
+plugins=(
+  git
+  node
+  npm
+  brew
+  golang
+  yarn
+  aws
+  docker
+)
 
 ###########################
 # User configuration
