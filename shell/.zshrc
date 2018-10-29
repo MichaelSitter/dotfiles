@@ -13,7 +13,6 @@ dirs_to_prepend=(
   "/sw/bin/"
   "$HOME/dotfiles/bin"
   "$HOME/bin"
-  "$HOME/.rbenv/bin"
   "$HOME/.jenv/bin"
   "$HOME/gocode/bin"
   "$(brew --prefix ruby)/bin"
@@ -41,10 +40,9 @@ source $ZSH/oh-my-zsh.sh
 ###########################
 # oh-my-zsh settings - https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###########################
-. ~/z/z.sh
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-ZSH_THEME="jonathan"
+ZSH_THEME="agnoster"
 
 #  https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins
 plugins=(
@@ -54,8 +52,10 @@ plugins=(
   brew
   golang
   yarn
+  nvm
   aws
   docker
+  gradle
 )
 
 ###########################
@@ -74,7 +74,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # rbevn - https://github.com/rbenv/rbenv
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # jenv - https://github.com/gcuisinier/jenv
 eval "$(jenv init -)"
@@ -92,3 +92,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Source local extra (private) settings specific to machine if it exists
 [ -f ~/.zsh.local ] && source ~/.zsh.local
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

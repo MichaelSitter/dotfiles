@@ -1,0 +1,40 @@
+# Doordash Container tools
+
+CONTAINER_TOOLS_DIR="~/dev/doordash-containertools"
+
+_complete_using () {
+   local cur="${COMP_WORDS[COMP_CWORD]}"
+   COMPREPLY=($(compgen -W "$1" -- ${cur}))
+}
+
+_control () {
+   if (( COMP_CWORD == 1 )); then
+      local commands_dir commands
+      commands_dir="$CONTAINER_TOOLS_DIR/bin/commands"
+      commands="$(find "$commands_dir" -type f -exec basename {} '.sh' \;)"
+      _complete_using "$commands"
+      return
+   fi
+
+   if (( COMP_CWORD == 2 )); then
+      local cmd="${COMP_WORDS[1]}"
+      case "$cmd" in
+         "enter"|"start"|"stopcontainer"|"tail") 
+            local containers="$(docker ps --format "{{.Names}}" | sort)"
+            _complete_using "$containers";;
+         *) return;;
+      esac
+   fi
+}
+
+autoload bashcompinit
+bashcompinit
+
+complete -F _control control
+
+source /usr/local/doordash/doordashrc
+export PATH=$PATH:~/dev/doordash-containertools/bin
+export PATH=$PATH:~/Library/Python/2.7/bin
+export PIP_EXTRA_INDEX_URL="<TODO_GEM_FURY_URL>"
+export HOMEBREW_GITHUB_API_TOKEN=<TODO_GH_API_TOKEN>
+alias dsjv="source ~/dev/doorstep-django/venv/bin/activate"
