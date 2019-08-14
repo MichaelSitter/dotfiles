@@ -13,7 +13,6 @@ dirs_to_prepend=(
   "/sw/bin/"
   "$HOME/dotfiles/bin"
   "$HOME/bin"
-  "$HOME/.rbenv/bin"
   "$HOME/.jenv/bin"
   "$HOME/gocode/bin"
   "$(brew --prefix ruby)/bin"
@@ -41,21 +40,23 @@ source $ZSH/oh-my-zsh.sh
 ###########################
 # oh-my-zsh settings - https://github.com/robbyrussell/oh-my-zsh/blob/master/templates/zshrc.zsh-template
 ###########################
-. ~/z/z.sh
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-ZSH_THEME="jonathan"
+ZSH_THEME="agnoster"
 
 #  https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins
 plugins=(
-  git
-  node
-  npm
-  brew
-  golang
-  yarn
-  aws
-  docker
+	git
+	node
+	npm
+	brew
+	golang
+	yarn
+	nvm
+	docker
+	gradle
+	pyenv
+	virtualenv
 )
 
 ###########################
@@ -73,9 +74,6 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
-# rbevn - https://github.com/rbenv/rbenv
-eval "$(rbenv init -)"
-
 # jenv - https://github.com/gcuisinier/jenv
 eval "$(jenv init -)"
 
@@ -87,8 +85,14 @@ bindkey '[D' backward-word
 # Aliases
 alias git-master='git add -A && git stash && git co master && git pull'
 alias git-latest='git add -A && git stash && git pull && git stash pop'
+alias gredo='git add -A && git commit --amend --no-verify --no-edit && git push -f'
+alias docker-stopall='docker kill $(docker ps -q)'
+alias docker-rm='docker rm $(docker ps -a -q)'
+alias docker-rmi='docker rmi $(docker images -q)'
 
 source $ZSH/oh-my-zsh.sh
 
 # Source local extra (private) settings specific to machine if it exists
 [ -f ~/.zsh.local ] && source ~/.zsh.local
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/opt/openssl/bin:$PATH"
