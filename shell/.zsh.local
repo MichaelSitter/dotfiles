@@ -1,0 +1,8 @@
+function sample_func {
+    echo "Hello world"
+}
+
+autoload bashcompinit
+bashcompinit
+
+export ENV_VAR_NAME=foo
